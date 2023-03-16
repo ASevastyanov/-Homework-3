@@ -22,42 +22,42 @@ extension HistoryItem: CustomStringConvertible {
 class ViewController: UIViewController {
     
     //Параметры для функции clickerCount
-    enum ItemMove{
+   enum ItemMove{
         case plus
         case minus
         case clean
     }
     
-    var sumClick = 0
-    var history: [HistoryItem] = []
+    private var sumClick = 0
+    private var history: [HistoryItem] = []
     
     //Лейбл для отображения подсчета нажатий
-    @IBOutlet weak var scoreView: UILabel!
+    @IBOutlet private weak var scoreView: UILabel!
     //Лейбл для отображения истории
-    @IBOutlet weak var historyLabelView: UILabel!
+    @IBOutlet private weak var historyLabelView: UILabel!
     //Скролл экрана истории
-    @IBOutlet weak var scrollViewForHistory: UIScrollView!
+    @IBOutlet private weak var scrollViewForHistory: UIScrollView!
     
     //Кнопка с добавлением значения +1 scoreView
-    @IBAction func clickPlusButtonView(_ sender: Any) {
+    @IBAction private func clickPlusButtonView(_ sender: Any) {
         clickerCount(value: .plus)
         print("Push button plus")
     }
     
     //Кнопка с уменьшение значения -1 scoreView
-    @IBAction func clickMinusButtonView(_ sender: Any) {
+    @IBAction private func clickMinusButtonView(_ sender: Any) {
         clickerCount(value: .minus)
         print("Push button minus")
     }
     
     //кнопка для очистки значений scoreView
-    @IBAction func cleanerButtonView(_ sender: Any) {
+    @IBAction private func cleanerButtonView(_ sender: Any) {
         clickerCount(value: .clean)
         print("Push button clean")
     }
     
     //кнопка для вкл/выкл истории
-    @IBAction func historyButtonView(_ sender: Any) {
+    @IBAction private func historyButtonView(_ sender: Any) {
         scrollViewForHistory.isHidden = !scrollViewForHistory.isHidden
     }
     
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     }
     
     //Функция для сохранение истории и отображения ее с необходимым текстом
-    func recordHistory(value: String){
+    private func recordHistory(value: String){
         let dateClick = Date()
         let factDate = dateClick.formDate
         let item = HistoryItem(time: factDate, value: value)
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
      }
     
     //Функция для работы с подсчетом очков и сбросом значений
-    func clickerCount(value: ItemMove){
+    private func clickerCount(value: ItemMove){
         switch value{
         case .plus:
             sumClick += 1
